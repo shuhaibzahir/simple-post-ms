@@ -1,21 +1,24 @@
 const express = require("express")
 const router = express.Router();
 const {randomBytes} = require("crypto")
-const comments = {}
+const commentsByPost = {}
 
-router.post("/",(req,res)=>{
-    const {id,comment} = req.body
+router.post("/:id",(req,res)=>{
+    const {content} = req.body
+    const {id} = req.params;
     const newComment = {
         id:randomBytes(4).toString('hex'),
-        comment
+        content
     };
-    comment[id] = 
-    res.json(newPost)
+    const comments =  commentsByPost[id] || []
+    comments.push(newComment) 
+    commentsByPost[id] = comments
+    res.status(201).json(newComment)
 })
 
 router.get("/:id",(req,res)=>{
     const {id}  = req.params;
-    res.json({comments: comments[id]})
+    res.json(commentsByPost[id]||[])
 })
 
 

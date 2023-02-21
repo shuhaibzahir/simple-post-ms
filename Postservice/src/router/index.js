@@ -14,7 +14,7 @@ router.post("/",(req,res)=>{
 })
 
 router.get("/",(req,res)=>{
-    res.json({posts})
+    res.json(posts)
 })
 
 
