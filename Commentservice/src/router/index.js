@@ -1,7 +1,7 @@
 const express = require("express")
 const router = express.Router();
 const {randomBytes} = require("crypto")
-const commentsByPost = {}
+const commentsByPost = require("./constants")
 
 router.post("/:id",(req,res)=>{
     const {content} = req.body
