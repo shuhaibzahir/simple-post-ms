@@ -2,7 +2,7 @@ const express = require("express")
 const router = express.Router();
 const {randomBytes} = require("crypto")
 const commentsByPost = require("./constants")
-
+const axios = require("axios")
 router.post("/:id",(req,res)=>{
     const {content} = req.body
     const {id} = req.params;
@@ -13,6 +13,7 @@ router.post("/:id",(req,res)=>{
     const comments =  commentsByPost[id] || []
     comments.push(newComment) 
     commentsByPost[id] = comments
+    axios.post("http://localhost:3004/event",{type:"commentCreated",data:{postId:id,...newComment}})
     res.status(201).json(newComment)
 })
 

@@ -2,3 +2,4 @@ client/node_modules
 Commentservice/node_modules
 Postservice/node_modules
 EventBus/node_modules
+QueryService/node_modules

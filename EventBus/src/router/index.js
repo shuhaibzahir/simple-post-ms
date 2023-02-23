@@ -12,6 +12,9 @@ router.post("/",(req,res)=>{
 
     /* ----------------------------- comment service ---------------------------- */
     axios.post("http://localhost:3003/event",event)
+    
+    /* ------------------------------ query service ----------------------------- */
+    axios.post("http://localhost:3004/event",event)
 
     res.send({status:"ok"})
 
