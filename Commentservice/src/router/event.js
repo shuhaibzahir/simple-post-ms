@@ -7,6 +7,7 @@ router.post("/",(req,res)=>{
     if(type === "postCreated"){
         commentsByPost[data.id]=[]
     }
+ 
 })
 
 

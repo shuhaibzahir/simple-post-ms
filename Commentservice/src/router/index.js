@@ -8,13 +8,13 @@ router.post("/:id",(req,res)=>{
     const {id} = req.params;
     const newComment = {
         id:randomBytes(4).toString('hex'),
-        content
+        content,
     };
     const comments =  commentsByPost[id] || []
     comments.push(newComment) 
     commentsByPost[id] = comments
-    axios.post("http://localhost:3004/event",{type:"commentCreated",data:{postId:id,...newComment}})
-    res.status(201).json(newComment)
+    axios.post("http://localhost:3001/event",{type:"commentCreated",data:{postId:id,...newComment}})
+    res.status(201).json({...newComment,status:"pending"})
 })
 
 router.get("/:id",(req,res)=>{
